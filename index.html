@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página Personal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #008cba;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .bio {
+            margin-bottom: 20px;
+        }
+        .bio h2 {
+            color: #008cba;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #008cba;
+            text-decoration: none;
+        }
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Mi Página Personal</h1>
+    </header>
+
+    <div class="container">
+        <div class="bio">
+            <h2>Sobre Mí</h2>
+            <p>¡Hola! Soy [Tu Nombre], un apasionado por [Tu Profesión o Intereses]. Me dedico a [Breve descripción de tu profesión o actividad]. En esta página encontrarás información sobre mí y algunos de mis trabajos destacados.</p>
+        </div>
+
+        <div class="social-links">
+            <h3>Conéctate Conmigo</h3>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://www.twitter.com" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+        </div>
+
+        <div class="carousel">
+            <img src="https://via.placeholder.com/800x400" alt="Imagen 1" class="active">
+            <img src="https://via.placeholder.com/800x400" alt="Imagen 2">
+            <img src="https://via.placeholder.com/800x400" alt="Imagen 3">
+            <div class="carousel-controls">
+                <button onclick="prevImage()">&#10094;</button>
+                <button onclick="nextImage()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        }
+
+        setInterval(nextImage, 3000);
+    </script>
+</body>
+</html>
